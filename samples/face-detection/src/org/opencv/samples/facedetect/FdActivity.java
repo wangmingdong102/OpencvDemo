@@ -170,6 +170,17 @@ public class FdActivity extends Activity implements CvCameraViewListener2 {
         mRgba = inputFrame.rgba();
         mGray = inputFrame.gray();
 
+        /* Module:Opencv,Task:xxx,Owner:wangmingdong,Date:2019.0327 */
+/*        Core.transpose(mRgba,mDst1);
+        Core.flip(mDst1,mRgba,1);*/
+        Log.d(TAG, "doom onCameraFrame mRgba cols:"+mRgba.cols()+" rows:"+mRgba.rows());
+        Log.d(TAG, "doom onCameraFrame mGray cols:"+mGray.cols()+" rows:"+mGray.rows());
+        Core.rotate(mRgba, mRgba, Core.ROTATE_90_CLOCKWISE);
+        Core.rotate(mGray, mGray, Core.ROTATE_90_CLOCKWISE);
+        Log.d(TAG, "doom onCameraFrame mRgba cols:"+mRgba.cols()+" rows:"+mRgba.rows());
+        Log.d(TAG, "doom onCameraFrame mGray cols:"+mGray.cols()+" rows:"+mGray.rows());
+        /* Module:Opencv,Task:xxx,Owner:wangmingdong,Date:2019.0327 */
+
         if (mAbsoluteFaceSize == 0) {
             int height = mGray.rows();
             if (Math.round(height * mRelativeFaceSize) > 0) {
